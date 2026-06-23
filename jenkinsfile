@@ -14,7 +14,11 @@ stages {
             echo 'Building application'
         }
     }
-
+stage('Build Docker Image'){
+steps {
+sh 'docker build -t sample-app
+}
+}
     stage('Test') {
         steps {
             echo 'Executing tests'
@@ -23,6 +27,14 @@ stages {
 
     stage('Deploy') {
         steps {
+
+sh '''
+docker rm -f sample-container || true
+docker run -d \
+-p 8081:80 \
+--name sample-container \
+sample-app
+'''
             echo 'Deploy completed'
         }
     }
