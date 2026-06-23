@@ -7,5 +7,6 @@ Simple HTML application for Jenkins Pipeline.
 Files:
 - index.html
 - Jenkinsfile
+
 ==========================================
 # jenkin-proj
