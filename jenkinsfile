@@ -16,7 +16,7 @@ stages {
     }
 stage('Build Docker Image'){
 steps {
-sh 'docker build -t sample-app
+sh 'docker build -t sample-app.'
 }
 }
     stage('Test') {
