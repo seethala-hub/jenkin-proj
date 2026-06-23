@@ -1,30 +1,41 @@
 pipeline {
-    agent any
+agent any
 
-    stages {
+stages {
 
-        stage('Checkout') {
-            steps {
-                echo 'Getting code from GitHub'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo 'Building application'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Testing application'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploy successful'
-            }
+    stage('Checkout') {
+        steps {
+            echo 'Downloading source code'
         }
     }
+
+    stage('Build') {
+        steps {
+            echo 'Building application'
+        }
+    }
+
+    stage('Test') {
+        steps {
+            echo 'Executing tests'
+        }
+    }
+
+    stage('Deploy') {
+        steps {
+            echo 'Deploy completed'
+        }
+    }
+}
+
+post {
+    success {
+        echo 'Pipeline executed successfully'
+    }
+
+    failure {
+        echo 'Pipeline execution failed'
+    }
+}
+
 }
